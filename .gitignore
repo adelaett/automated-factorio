@@ -1,8 +1,11 @@
 data/**
 
-__pycache__
+**/__pycache__
 
 figures/*
 .direnv
 .ipynb_checkpoints
 .vscode
+
+/.envrc
+/.vscode
