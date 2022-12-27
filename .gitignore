@@ -3,9 +3,9 @@
 **/__pycache__
 
 figures/*
-.direnv
-.ipynb_checkpoints
-.vscode
+/.direnv
+/.ipynb_checkpoints
+/.vscode
 
 /.envrc
 /.vscode
