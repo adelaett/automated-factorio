@@ -79,8 +79,6 @@ def clean(entities):
     
     return translate(-x1, -y1, entities)
 
-
-
 if __name__ == '__main__':
     import argparse
     import sys
