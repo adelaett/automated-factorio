@@ -17,7 +17,8 @@ class table(bunch):
     return jq.compile(cmd).input(self).first()
 
 
-def load_db(path):
+def load_db(path: Path | str) -> bunch:
+  """Load a json database from a folder."""
   db = bunch()
   for f in Path(path).glob("*.json"):
     db[f.stem.replace("-", "_")] = table(json.load(open(f)))
