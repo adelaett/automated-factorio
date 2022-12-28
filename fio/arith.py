@@ -92,7 +92,7 @@ def continued(r):
 
 def float_to_frac(r):
     
-    a = iter(reversed(list(takewhile(lambda x: x < 10000, continued(F(r))))))
+    a = iter(reversed(list(takewhile(lambda x: x < 1000, continued(F(r))))))
     
     x = F(next(a))
     for y in a:
