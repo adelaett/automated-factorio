@@ -1,5 +1,7 @@
+from numbers import Number
+from typing import Dict, List, Literal
 import mip
-import arith
+from . import arith
 
 # %%
 
@@ -21,11 +23,11 @@ import arith
 
 # %%
 
-def _optimize(inputs, outputs):
+def optimize(inputs: List[Number], outputs: List[Number]) -> Dict[int, Number]:
   m = mip.Model()
   m.verbose = 0
 
-  assert sum(inputs) == sum(outputs)
+  assert arith.float_to_frac(sum(inputs)) == arith.float_to_frac(sum(outputs))
 
   x = {
     (i, j): m.add_var(f"flow_{i, j}", lb=0, ub=1)
@@ -57,13 +59,6 @@ def _optimize(inputs, outputs):
   m.optimize(max_seconds=1)
 
   x = {k: arith.float_to_frac(v.x) for k, v in x.items() if arith.float_to_frac(v.x) > 0}
-  y = {k: arith.float_to_frac(v.x) for k, v in y.items()}
+  y = {k: arith.float_to_frac(v.x) for k, v in y.items() if arith.float_to_frac(v.x) > 0}
 
-  return {"x": x, "y": y}
-
-# %%
-
-def optimize(inputs, outputs):
-
-  return _optimize(tuple(inputs), tuple(outputs))
-
+  return x
