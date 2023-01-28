@@ -23,3 +23,47 @@ def load_db(path: Path | str) -> bunch:
   for f in Path(path).glob("*.json"):
     db[f.stem.replace("-", "_")] = table(json.load(open(f)))
   return db
+
+
+class HyperDiGraph:
+  def __init__(self):
+    self._edges = []
+    self._nodes = set()
+
+  def add_edge(self, A, B, data=None):
+    self._edges.append((A, B, data))
+    self._nodes.update(A)
+    self._nodes.update(B)
+  
+  def in_edges(self, v):
+    assert v in self._nodes
+    return [(e[0], e[1]) for e in self._edges if v in e[1]]
+
+  def in_edges_data(self, v):
+    assert v in self._nodes
+    return [e for e in self._edges if v in e[1]]
+
+  def out_edges(self, v):
+    assert v in self._nodes
+    return [(e[0], e[1]) for e in self._edges if v in e[0]]
+
+  def out_edges_data(self, v):
+    assert v in self._nodes
+    return [e for e in self._edges if v in e[0]]
+
+  def edges(self):
+    return [(e[0], e[1]) for e in self._edges]
+
+  def edges_data(self):
+    return [e for e in self._edges]
+
+  def nodes(self):
+    return [v for v in self._nodes]
+
+  def edge_by_name(self, name):
+    return next(d for (_, _, d) in self._edges if d["name"] == name)
+
+
+def get_recipes(params):
+  pass
+

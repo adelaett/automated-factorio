@@ -67,7 +67,7 @@ def optimize(inputs: List[Number], outputs: List[Number]) -> Optional[Dict[int, 
   if m.status in [mip.OptimizationStatus.FEASIBLE, mip.OptimizationStatus.OPTIMAL]:
 
     x = {k: arith.float_to_frac(v.x) for k, v in x.items() if arith.float_to_frac(v.x) > 0}
-    y = {k: arith.float_to_frac(v.x) for k, v in y.items() if arith.float_to_frac(v.x) > 0}
+    # y = {k: arith.float_to_frac(v.x) for k, v in y.items() if arith.float_to_frac(v.x) > 0}
 
     return x
   

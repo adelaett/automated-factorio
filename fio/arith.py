@@ -91,11 +91,16 @@ def continued(r):
     return [i] + continued(1/f)
 
 def float_to_frac(r):
-    
-    a = iter(reversed(list(takewhile(lambda x: x < 1000, continued(F(r))))))
-    
-    x = F(next(a))
-    for y in a:
-        x = y + 1/x
-    
-    return x
+
+  integral = int(math.floor(r))
+
+
+  r = r - integral
+  
+  a = iter(reversed(list(takewhile(lambda x: x < 1000, continued(F(r))))))
+  
+  fractionnal = F(next(a))
+  for y in a:
+    fractionnal = y + 1/fractionnal
+  
+  return integral + fractionnal
