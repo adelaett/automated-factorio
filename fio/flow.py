@@ -6,6 +6,18 @@ import fio.arith as arith
 def compute_cost(data):
     return 1 # data["machine"]["energy_usage"]
 
+def ingredients_coefs(r, m):
+    return {
+        i["name"]: m["crafting_speed"] * i["amount"]/ r["energy"]
+        for i in r["ingredients"]
+    }
+
+def products_coefs(r, m):
+    return {
+        p["name"]: m["crafting_speed"] * (p["amount"] if "amount" in p else (p["amount_min"] + p["amount_min"] / 2))/r["energy"] * p["probability"]
+        for p in r["products"]
+    }
+
 def ingredient_coef(data, v):
     coef = data["machine"]["crafting_speed"] * sum(i["amount"] for i in data["recipe"]["ingredients"] if i["name"] == v) / data["recipe"]["energy"]
     assert coef > 0
@@ -66,7 +78,7 @@ def optimize_model(graph, sources):
             # "considered": {k for k, v in considered.items() if round(v.x, 3) != 0},
             # "used": {k: (v.x) for k, v in used.items() if round(v.x, 3) != 0},
             # "produced": {k: (v.x) for k, v in produced.items() if round(v.x, 3) != 0},
-            "flow": {k: (int(v.x), (v.x)) for k, v in flow.items() if v.x is not None and round(v.x, 3) > 0},
+            "flow": {k: (math.ceil(v.x), (v.x)) for k, v in flow.items() if v.x is not None and round(v.x, 3) > 0},
         }
     else:
         return {
