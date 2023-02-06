@@ -79,6 +79,15 @@ def clean(entities):
     
     return translate(-x1, -y1, entities)
 
+def clean_recursive(d):
+    if type(d) == dict:
+        return {k: clean_recursive(v) if k != "entities" else clean(v) for k, v in d.items()}
+    elif type(d) == list:
+        return [clean_recursive(v) for v in d]
+    else:
+        return d
+
+
 if __name__ == '__main__':
     import argparse
     import sys
@@ -86,12 +95,16 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Load and read blueprints for factorio (https://www.factorio.com/)")
     parser.add_argument('-l', "--load", action='store_true')
     parser.add_argument('-d', "--dump", action='store_true')
+    parser.add_argument('-c', "--clean", action='store_true')
     args = parser.parse_args()
 
     assert not (args.load and args.dump)
 
-    if args.load:
-        print(parse_blueprint_string(sys.stdin.read()))
+    if args.load and not args.clean:
+        print(json.dumps(loads(sys.stdin.read()), indent=2))
+
+    if args.load and args.clean:
+        print(json.dumps(clean_recursive(loads(sys.stdin.read())), indent=2))
 
     if args.dump:
         print(generate_blueprint_string(sys.stdin.read()))
