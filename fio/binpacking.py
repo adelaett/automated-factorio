@@ -1,5 +1,5 @@
 from numbers import Number
-from typing import Dict, List, Literal, Optional
+from typing import Dict, List, Literal, Optional, Tuple
 import mip
 from . import arith
 
@@ -23,7 +23,9 @@ from . import arith
 
 # %%
 
-def optimize(inputs: List[Number], outputs: List[Number]) -> Optional[Dict[int, Number]]:
+
+
+def optimize(inputs: List[Number], outputs: List[Number], weights:Optional[Dict[Tuple[Number, Number], Number]]=None) -> Optional[Dict[int, Number]]:
   m = mip.Model()
   m.verbose = 0
 
@@ -32,6 +34,7 @@ def optimize(inputs: List[Number], outputs: List[Number]) -> Optional[Dict[int, 
 
   if type(outputs) == list:
     outputs = dict(enumerate(outputs))
+
 
   assert arith.float_to_frac(sum(inputs.values())) == arith.float_to_frac(sum(outputs.values()))
 
@@ -46,7 +49,7 @@ def optimize(inputs: List[Number], outputs: List[Number]) -> Optional[Dict[int, 
       lb=0,
       ub=1,
       var_type=mip.BINARY,
-      obj=10000
+      obj=10000 if weights is None else weights[i, j]
     )
     for i, _ in inputs.items()
     for j, _ in outputs.items()
