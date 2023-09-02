@@ -1,0 +1,10 @@
+---
+filter:
+    machine: 'assembling-machine-2'
+    fluid_in: 0
+    fluid_out: 0
+args:
+    recipe: "$.blueprint.entities[?name='assembling-machine-2'].recipe"
+    request_items: "$.blueprint.entities[?name='logistic-chest-requester'].request_filters"
+---
+0eNqNklFugzAMhu/i51CtFChDvck0oQBuawkS5hi0qsrdl9Ct2tSu21Pk2P5s//YZmn7CkckIVGeg1hoH1csZHB2M7uOfnEaECkhwAAVGD9HSzuHQ9GQOyaDbIxlMUvAKyHT4DtXavypAIySEF95inGozDQ1yCHhMUjBaF5KtiR1E4HaVKzhBlRSr3Ht1A0yvwL12kpBxyBIct6Tii5QFkoKOGNuLP7vD3fybW/7kBiWFbV83eNQzWY5hLXE7kdTB111z98RO6j/0xj40ydZQm3xC4FLDiY6ry5+iNYyatcRasAN/T6bsSuztgZxE3hHDYIxvU3gfK7a5r33+G3QMy6UZk5HtTN1j1RZ2uJpl7urbWSqYkd2SkpbrbPucbosiL4uy9P4DS1Lq7g==
