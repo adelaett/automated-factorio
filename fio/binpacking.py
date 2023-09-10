@@ -25,7 +25,7 @@ from . import arith
 
 
 
-def optimize(inputs: List[Number], outputs: List[Number], weights:Optional[Dict[Tuple[Number, Number], Number]]=None) -> Optional[Dict[int, Number]]:
+def optimize(inputs: List[Number], outputs: List[Number], weights:Optional[Dict[Tuple[Number, Number], Number]]=None, timeout=10) -> Optional[Dict[int, Number]]:
   m = mip.Model()
   m.verbose = 0
 
@@ -65,7 +65,7 @@ def optimize(inputs: List[Number], outputs: List[Number], weights:Optional[Dict[
   for j, v in outputs.items():
       m.add_constr(mip.quicksum(x[i, j] for i, _ in inputs.items()) == v)
 
-  m.optimize(max_seconds=1)
+  m.optimize(max_seconds=timeout)
 
   if m.status in [mip.OptimizationStatus.FEASIBLE, mip.OptimizationStatus.OPTIMAL]:
 
@@ -75,4 +75,5 @@ def optimize(inputs: List[Number], outputs: List[Number], weights:Optional[Dict[
     return x
   
   else:
+    print(m.status)
     return None
