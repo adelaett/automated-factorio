@@ -1,0 +1,97 @@
+{
+    "resources": [
+        {
+            "infinite": false,
+            "minimum": 0,
+            "mining_time": 1,
+            "name": "coal",
+            "products": [
+                {
+                    "amount": 1,
+                    "name": "coal",
+                    "type": "item"
+                }
+            ],
+            "resource_category": "basic-solid"
+        },
+        {
+            "infinite": false,
+            "minimum": 0,
+            "mining_time": 1,
+            "name": "copper-ore",
+            "products": [
+                {
+                    "amount": 1,
+                    "name": "copper-ore",
+                    "type": "item"
+                }
+            ],
+            "resource_category": "basic-solid"
+        },
+        {
+            "infinite": true,
+            "minimum": 60000,
+            "mining_time": 1,
+            "name": "crude-oil",
+            "products": [
+                {
+                    "amount": 10,
+                    "name": "crude-oil",
+                    "type": "fluid"
+                }
+            ],
+            "resource_category": "basic-fluid"
+        },
+        {
+            "infinite": false,
+            "minimum": 0,
+            "mining_time": 1,
+            "name": "iron-ore",
+            "products": [
+                {
+                    "amount": 1,
+                    "name": "iron-ore",
+                    "type": "item"
+                }
+            ],
+            "resource_category": "basic-solid"
+        },
+        {
+            "infinite": false,
+            "minimum": 0,
+            "mining_time": 1,
+            "name": "stone",
+            "products": [
+                {
+                    "amount": 1,
+                    "name": "stone",
+                    "type": "item"
+                }
+            ],
+            "resource_category": "basic-solid"
+        },
+        {
+            "infinite": false,
+            "minimum": 0,
+            "mining_time": 2,
+            "name": "uranium-ore",
+            "products": [
+                {
+                    "amount": 1,
+                    "name": "uranium-ore",
+                    "type": "item"
+                }
+            ],
+            "required_fluid": {
+                "amount": 10,
+                "name": "sulfuric-acid",
+                "type": "fluid"
+            },
+            "resource_category": "basic-solid"
+        }
+    ],
+    "versions": {
+        "ExportData": "0.0.5",
+        "base": "1.1.94"
+    }
+}

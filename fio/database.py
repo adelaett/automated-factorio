@@ -18,11 +18,9 @@ class table(bunch):
 
 
 def load_db(path: Path | str) -> bunch:
-  """Load a json database from a folder."""
-  db = bunch()
-  for f in Path(path).glob("*.json"):
-    db[f.stem.replace("-", "_")] = table(json.load(open(f)))
-  return db
+  """Load a json database containing multiple tables."""
+
+  return bunch({k: table(v) for k, v in json.load(open(path)).items()})
 
 
 class HyperDiGraph:
