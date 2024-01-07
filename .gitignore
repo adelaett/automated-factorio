@@ -9,3 +9,5 @@ figures/*
 
 /.envrc
 /.vscode
+/.venv
+__pycache__
