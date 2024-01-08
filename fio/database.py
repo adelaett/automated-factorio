@@ -9,18 +9,32 @@ class bunch(dict):
     except AttributeError:
       return self[name]
 
-class table(bunch):
+class table_base:
   def find(self, cmd):
     return jq.compile(cmd).input(self).all()
 
   def query(self, cmd):
     return jq.compile(cmd).input(self).first()
 
+class table_dict(dict, table_base):
+  pass
+
+class table_list(list, table_base):
+  pass
 
 def load_db(path: Path | str) -> bunch:
-  """Load a json database containing multiple tables."""
-
-  return bunch({k: table(v) for k, v in json.load(open(path)).items()})
+    """Load a json database containing multiple tables."""
+    data = json.load(open(path))
+    tables = {}
+    
+    # Convert top-level keys into dictionaries
+    for k, v in data.items():
+        if isinstance(v, list):
+            tables[k] = table_list(v)
+        elif isinstance(v, dict):
+            tables[k] = table_dict(v)
+    
+    return bunch(tables)
 
 
 class HyperDiGraph:
