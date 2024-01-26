@@ -7328,12 +7328,12 @@
             "name": "uranium-processing",
             "products": [
                 {
-                    "amount": 1,
+                    "amount": 0.996,
                     "name": "uranium-235",
                     "type": "item"
                 },
                 {
-                    "amount": 1,
+                    "amount": 0.004,
                     "name": "uranium-238",
                     "type": "item"
                 }

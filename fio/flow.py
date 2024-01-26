@@ -13,8 +13,9 @@ def ingredients_coefs(r, m):
     }
 
 def products_coefs(r, m):
+    print(r["products"])
     return {
-        p["name"]: m["crafting_speed"] * (p["amount"] if "amount" in p else (p["amount_min"] + p["amount_min"] / 2))/r["energy"] * p["probability"]
+        p["name"]: m["crafting_speed"] * (p["amount"] if "amount" in p else (p["amount_min"] + p["amount_min"] / 2) * p["probability"])/r["energy"]
         for p in r["products"]
     }
 
@@ -25,7 +26,7 @@ def ingredient_coef(data, v):
 
 def product_coef(data, v):
     try:
-        coef = data["machine"]["crafting_speed"] * sum(p["amount"]*p["probability"] for p in data["recipe"]["products"] if p["name"] == v) / data["recipe"]["energy"]
+        coef = data["machine"]["crafting_speed"] * sum(p["amount"] for p in data["recipe"]["products"] if p["name"] == v) / data["recipe"]["energy"]
     except:
         coef = data["machine"]["crafting_speed"] * sum((p["amount_min"] + p["amount_max"])/2*p["probability"] for p in data["recipe"]["products"] if p["name"] == v) / data["recipe"]["energy"]
     
