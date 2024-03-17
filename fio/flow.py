@@ -35,7 +35,7 @@ def product_coef(data, v):
 
 def optimize_model(graph, sources):
     model = mip.Model()
-    model.verbose = 0
+    # model.verbose = 0
 
     flow_int = {data["name"]: model.add_var(f"flow_{data['name']}", lb=0, obj=compute_cost(data), var_type=mip.INTEGER) for a, b, data in graph.edges_data()}
     flow = {data["name"]: model.add_var(f"flow_{data['name']}", lb=0, obj=compute_cost(data)) for a, b, data in graph.edges_data()}
@@ -70,7 +70,7 @@ def optimize_model(graph, sources):
         else:
             model.add_constr(diff <= 0)
 
-    model.optimize(max_seconds=1)
+    model.optimize(max_seconds=30)
     if model.status in [mip.OptimizationStatus.FEASIBLE, mip.OptimizationStatus.OPTIMAL]:
         return {
             "kind": "solution",
