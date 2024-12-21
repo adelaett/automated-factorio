@@ -3,6 +3,8 @@ import zlib
 import json
 import copy
 
+import types
+
 
 def parse_blueprint_string(blueprint_base64):
     assert isinstance(blueprint_base64, str)
