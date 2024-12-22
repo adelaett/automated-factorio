@@ -1,4 +1,3 @@
-from typing import Dict, List
 import heapq
 
 from collections import defaultdict
@@ -15,8 +14,8 @@ Each of the cells are of one type LU (starts on the left, finishes on up), LR, L
 This algorithm may return None if no path is possible. This is possible in the advent of either an absence of path, or when the path found is invalid because looping. However, Dijstra algorithm should always return the optimal path, hence should be valid.
 """
 
-def identify_successors(mask: Dict[Position, bool], source: Position) -> List[Position]:
-  l = []
+def identify_successors(mask: dict[Position, bool], source: Position) -> list[tuple[int, Position]]:
+  l: list[tuple[int, Position]] = []
   for i in range(1, 2+1):
     l.append((i, Position(source.x+i, source.y)))
     l.append((i, Position(source.x-i, source.y)))
@@ -25,9 +24,9 @@ def identify_successors(mask: Dict[Position, bool], source: Position) -> List[Po
   
   return [(d, p) for (d, p) in l if not mask[p]]
 
-def dijstra(mask, source, target):
-  prev: Dict[Position, Position] = dict()
-  best: Dict[Position, int] = defaultdict(lambda: float("inf"))
+def dijstra(mask: dict[Position, bool], source: Position, target: Position):
+  prev: dict[Position, Position] = dict()
+  best: dict[Position, float] = defaultdict(lambda: float("inf"))
 
   queue = [(0, source)]
 
