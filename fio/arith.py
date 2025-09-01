@@ -1,14 +1,20 @@
+from dataclasses import dataclass
 import math
 from fractions import Fraction as F
-import networkx as nx
-from itertools import count, takewhile
+from itertools import takewhile
+from turtle import right
 
-def frac_to_ver(p, q=None, base=2):
+def frac_to_ver(p: int|F, q: int|None=None, base: int=2) -> tuple[list[int], list[int]]:
     if type(p) == F and q is None:
         p, q = p.numerator, p.denominator
-    occurs = dict()
+    elif type(p) == int and type(q) == int:
+        pass
+    else:
+        raise TypeError("Wrong type")
+
+    occurs: dict[int, int] = dict()
     pos = 0
-    current = []
+    current: list[int] = []
     while p not in occurs:
         occurs[p] = pos
         z = (base*p)//q
@@ -25,7 +31,7 @@ def frac_to_ver(p, q=None, base=2):
     return (current[:occurs[p]], current[occurs[p]:])
 
 
-def horner(l, base=2):
+def horner(l: list[int], base:int=2) -> F:
     x = F(0)
     for c in l:
         x = x * base + c
@@ -33,28 +39,50 @@ def horner(l, base=2):
     return x
 
 
-def ver_to_frac(ver, base=2):
+def ver_to_frac(ver: tuple[list[int], list[int]], base: int=2):
     t, r = ver
 
     nt = len(t)
     nr = len(r)
     x = 0 if nr == 0 else horner(r) / (base**nr - 1) / (base**nt)
-    y = horner(t) / base**nt
+    y: F = horner(t) / base**nt
 
     return x + y
 
 
-def difficulty(p, q=None, base=2):
+def difficulty(p: int|F, q:int|None=None, base: int=2):
     t, r = frac_to_ver(p, q, base)
     return len(t) + len(r)
 
+def continued(r: F) -> list[int]:
+    i = math.floor(r)
+    f = r - i
+    
+    if f == 0:
+        return [i]
+    
+    return [i] + continued(1/f)
 
+def float_to_frac(r: float)-> F:
+
+  integral = int(math.floor(r))
+
+  r = r - integral
+
+  a = iter(reversed(list(takewhile(lambda x: x < 1000, continued(F.from_float(r))))))
+  
+  fractionnal = F(next(a), 1)
+  for y in a:
+    fractionnal = y + 1/fractionnal
+  
+  return integral + fractionnal
+
+@dataclass
 class Node:
-    def __init__(self, v, left=None, right=None, info=None):
-        self.v = v  # The node value (float/int/str)
-        self.left = left    # Left child
-        self.right = right  # Right child
-        self.info = info
+    v: int
+    right: Node | None
+    left: Node | None
+    info: str | None
     
     def __repr__(self):
         if self.right is None and self.left is None:
@@ -80,27 +108,3 @@ def get_splitter_tree(ratios):
         assert i < j
         B = B[:i] + B[i+1:j] + B[j+1:] + [Node(left.v+right.v, left, right, c)]
     return next(iter(B))
-
-def continued(r):
-    i = math.floor(r)
-    f = r - i
-    
-    if f == 0:
-        return [i]
-    
-    return [i] + continued(1/f)
-
-def float_to_frac(r):
-
-  integral = int(math.floor(r))
-
-
-  r = r - integral
-  
-  a = iter(reversed(list(takewhile(lambda x: x < 1000, continued(F(r))))))
-  
-  fractionnal = F(next(a))
-  for y in a:
-    fractionnal = y + 1/fractionnal
-  
-  return integral + fractionnal

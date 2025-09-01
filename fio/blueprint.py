@@ -3,7 +3,7 @@ import zlib
 import json
 import copy
 
-import types
+from .mytypes import *
 
 
 def parse_blueprint_string(blueprint_base64):

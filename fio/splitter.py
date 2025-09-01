@@ -1,5 +1,5 @@
-import blueprint
-import arith
+from . import blueprint
+from . import arith
 
 
 # Generated using hand-made factorio blueprint book
@@ -10,7 +10,7 @@ book = {b["blueprint"]["label"]: blueprint.clean(b["blueprint"]["entities"]) for
 def sequence_from_frac(f):
     const, rep = arith.frac_to_ver(f)
 
-    l = []
+    l: list[str] = []
 
     l.append("input")
 
