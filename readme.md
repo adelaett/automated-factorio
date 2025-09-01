@@ -54,6 +54,7 @@ The algorithms implemented in this project are based on classical combinatorial 
 - **Bin Packing**: Classical optimization problem for matching input/output flows
 - **Steiner Tree Problem**: Kou-Markowsky algorithm for optimal machine placement
 - **Graph Pathfinding**: Dijkstra and A* algorithms for routing connections
+- **Continued Fractions**: Exact continuous fractions for floating-point approximation & splitter computations.
 
 
 
