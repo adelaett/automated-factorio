@@ -61,3 +61,13 @@ The algorithms implemented in this project are based on classical combinatorial 
 ### VS-code configuration
 
 To use the notebooks configuration correctly, add `"jupyter.notebookFileRoot": "${workspaceFolder}"` to your configuration.
+
+
+### MacOS
+
+using `python-mip` on silicon apple requires to have the `0.16rc2` version at least, and a gcc compiler installed. if using macports and not homebrew you need to relink libgfortran
+
+install_name_tool -change \
+    /opt/homebrew/opt/gcc/lib/gcc/current/libgfortran.5.dylib \
+    /opt/local/lib/libgcc/libgfortran.5.dylib \
+    .venv/lib/python3.11/site-packages/mip/libraries/cbc-c-darwin-arm64.dylib

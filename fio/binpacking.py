@@ -1,4 +1,4 @@
-from numbers import Number
+from fractions import Fraction
 from typing import Dict, List, Literal, Optional, Tuple
 import mip
 from . import arith
@@ -25,31 +25,29 @@ from . import arith
 
 
 
-def optimize(inputs: List[Number], outputs: List[Number], weights:Optional[Dict[Tuple[Number, Number], Number]]=None, timeout=10) -> Optional[Dict[int, Number]]:
+def optimize(inputs_: List[float], outputs_: List[float], weights:Optional[Dict[Tuple[float, float], float]]=None, timeout=10) -> Optional[Dict[tuple[int, int], Fraction]]:
   m = mip.Model()
   m.verbose = 0
 
-  if type(inputs) == list:
-    inputs = dict(enumerate(inputs))
+  inputs = dict(enumerate(inputs_))
 
-  if type(outputs) == list:
-    outputs = dict(enumerate(outputs))
+  outputs = dict(enumerate(outputs_))
 
 
-  assert arith.float_to_frac(sum(inputs.values())) == arith.float_to_frac(sum(outputs.values()))
+  assert arith.float_to_frac(sum(inputs.values(), 0)) == arith.float_to_frac(sum(outputs.values()))
 
   x = {
-    (i, j): m.add_var(f"flow_{i, j}", lb=0, ub=1)
+    (i, j): m.add_var(f"flow_{i, j}", lb=0, ub=1) # type: ignore[arg-type]
     for i, _ in inputs.items()
     for j, _ in outputs.items()
   }
   y = {
     (i, j): m.add_var(
       f"flow_bool_{i, j}",
-      lb=0,
-      ub=1,
+      lb=0, # type: ignore[arg-type]
+      ub=1, # type: ignore[arg-type]
       var_type=mip.BINARY,
-      obj=10000 if weights is None else weights[i, j]
+      obj=10000 if weights is None else weights[i, j] # type: ignore[arg-type]
     )
     for i, _ in inputs.items()
     for j, _ in outputs.items()
@@ -65,7 +63,7 @@ def optimize(inputs: List[Number], outputs: List[Number], weights:Optional[Dict[
   for j, v in outputs.items():
       m.add_constr(mip.quicksum(x[i, j] for i, _ in inputs.items()) == v)
 
-  m.optimize(max_seconds=timeout)
+  m.optimize(max_seconds=timeout) # type: ignore[arg-type]
 
   if m.status in [mip.OptimizationStatus.FEASIBLE, mip.OptimizationStatus.OPTIMAL]:
 

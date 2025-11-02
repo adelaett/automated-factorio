@@ -2,7 +2,7 @@ from dataclasses import dataclass
 import math
 from fractions import Fraction as F
 from itertools import takewhile
-from turtle import right
+from typing import Any
 
 def frac_to_ver(p: int|F, q: int|None=None, base: int=2) -> tuple[list[int], list[int]]:
     if type(p) == F and q is None:
@@ -80,9 +80,9 @@ def float_to_frac(r: float)-> F:
 @dataclass
 class Node:
     v: int
-    right: Node | None
-    left: Node | None
-    info: str | None
+    right: 'Node | None'
+    left: 'Node | None'
+    info: Any | None
     
     def __repr__(self):
         if self.right is None and self.left is None:
@@ -92,7 +92,7 @@ class Node:
 
 
 def get_splitter_tree(ratios):
-    B = [Node(f, info=i) for i, f in enumerate(ratios)]
+    B = [Node(f, None, None, info=i) for i, f in enumerate(ratios)]
 
     while len(B) >= 2:
         k = len(B)
