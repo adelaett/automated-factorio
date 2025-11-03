@@ -58,7 +58,6 @@ def translate(dx, dy, entities):
         e["position"]["y"] += dy
     
         new.append(e)
-        
     
     return new
 

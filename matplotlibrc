@@ -4,7 +4,7 @@ font.family: serif
 font.serif: Palatino
 axes.titlesize: medium
 figure.titlesize: medium
-text.usetex: True
+text.usetex: False
 text.latex.preamble: \usepackage{amsmath}\usepackage{amssymb}\usepackage{siunitx}[=v2]
 axes.prop_cycle : (cycler('color', ["0d49fb", "e6091c", "26eb47", "8936df", "fec32d", "25d7fd"]) + cycler('ls', ['-', '--', '-.', ':', '-', '--']) + cycler('marker', ['o', 's', '^', 'v', '<', '>']))
 lines.markersize : 3
