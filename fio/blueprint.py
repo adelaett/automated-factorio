@@ -65,14 +65,56 @@ def recount(entities):
     
         new.append(e)
         
-    
     return new
+
+
+def merge(blueprints):
+    """Merge multiple blueprints with unique entity numbers and offset wires."""
+    if not blueprints:
+        return None
+    
+    merged = {
+        'blueprint': {
+            'icons': blueprints[0]['blueprint'].get('icons', []),
+            'entities': [],
+            'wires': [],
+            'item': 'blueprint',
+            'version': blueprints[0]['blueprint'].get('version', 562949958139904)
+        }
+    }
+    
+    offset = 0
+    
+    for bp in blueprints:
+        entities = bp['blueprint'].get('entities', [])
+        wires = bp['blueprint'].get('wires', [])
+        
+        # Offset entities
+        for entity in entities:
+            new_entity = entity.copy()
+            new_entity['entity_number'] += offset
+            merged['blueprint']['entities'].append(new_entity)
+        
+        # Offset wires [source_entity, source_connector, target_entity, target_connector]
+        for wire in wires:
+            merged['blueprint']['wires'].append([
+                wire[0] + offset,  # source entity
+                wire[1],           # source connector
+                wire[2] + offset,  # target entity
+                wire[3]            # target connector
+            ])
+        
+        # Update offset to max entity number
+        if entities:
+            offset = max(e['entity_number'] for e in merged['blueprint']['entities'])
+    
+    return merged
 
 def clean(entities):
     # Cleanup the blueprint
     x1, y1, x2, y2 = boundingbox(entities)
     
-    return translate(-x1, -y1, entities)
+    translate(-x1, -y1, entities)
 
 def clean_recursive(d):
     if type(d) == dict:
