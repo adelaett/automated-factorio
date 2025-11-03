@@ -27,7 +27,7 @@ def dumps(bp):
 
 
 def bp_from_entities(entities):
-    return {"blueprint": {"icons": [],"entities": entities["entities"],"item": "blueprint","version": 281479275675648}}
+    return {"blueprint": {"icons": [],"entities": entities,"item": "blueprint","version": 281479275675648}}
 
 
 ### Functions that manipulate blueprints to translate it, or to generate bounding boxes.
@@ -50,16 +50,10 @@ def size(entities):
 
 def translate(dx, dy, entities):
     # translate a blueprint
-    new = []
-    
     for e in entities:
-        e = copy.deepcopy(e)
         e["position"]["x"] += dx
         e["position"]["y"] += dy
-    
-        new.append(e)
-    
-    return new
+
 
 from itertools import count
 def recount(entities):
