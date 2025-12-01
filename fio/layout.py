@@ -8,6 +8,9 @@ from itertools import count
 import requests
 
 
+from . import arith
+
+
 def filter_serializing(info):
     data = {}
 
@@ -141,3 +144,83 @@ def plot_layout(graph, params=None):
 
     dt = datetime.now()
     return plt.savefig(f"figures/layout-{dt.strftime(r'layout-%Y-%m-%d_%H-%M-%S')}.png")
+
+import gurobipy as grb
+from gurobipy import GRB
+import networkx as nx
+
+import networkx as nx
+
+def compute_layers(G:nx.DiGraph, A: set, B: set, params=None):
+
+    if params is None:
+        params = {}
+
+    m = grb.Model()
+
+    for k, v in params.items():
+        m.setParam(k, v)
+
+    n = len(G.nodes)
+
+    l = m.addVars(G.nodes, vtype=GRB.INTEGER)
+
+    r = m.addVars(G.edges, vtype=GRB.BINARY)
+
+    H = m.addVar(name="H", vtype=GRB.INTEGER)
+
+    for u, v in G.edges:
+        m.addConstr(l[v] >= l[u] + 1 - n * r[u, v])
+    
+    for u in G.nodes:
+        m.addConstr(l[u] <= H)
+    
+    m.setObjectiveN(H, 0, priority=1, name="minimize number of layers")
+    m.setObjectiveN(sum(l[v] - l[u] for u, v in G.edges), 1, name="minimize edges length")
+    m.setObjectiveN(sum(l[u] for u in A), 2, name="minimize position of elements in A")
+    m.setObjectiveN(sum(-l[u] for u in B), 3, name="maximize position of elements in B")
+    m.setObjectiveN(sum(r[e] for e in G.edges), 4, priority=1, name="minimize feedback arcs")
+
+    m.optimize()
+
+    print(sum(r[e].X for e in G.edges))
+    
+
+    return {u: arith.float_to_frac(l[u].X) for u in G.nodes}, m.Work
+
+def compute_layers_multi(G:nx.MultiDiGraph, A: set, B: set, params=None):
+
+    if params is None:
+        params = {}
+
+    m = grb.Model()
+
+    for k, v in params.items():
+        m.setParam(k, v)
+
+    n = len(G.nodes)
+
+    l = m.addVars(G.nodes, vtype=GRB.INTEGER)
+
+    r = m.addVars(G.edges(keys=True), vtype=GRB.BINARY)
+
+    H = m.addVar(name="H", vtype=GRB.INTEGER)
+
+    for u, v, k in G.edges(keys=True):
+        m.addConstr(l[v] >= l[u] + 1 - n * r[u, v, k])
+    
+    for u in G.nodes:
+        m.addConstr(l[u] <= H)
+    
+    m.setObjectiveN(H, 0, priority=1, name="minimize number of layers")
+    m.setObjectiveN(sum(l[v] - l[u] for u, v, k in G.edges(keys=True)), 1, name="minimize edges length")
+    m.setObjectiveN(sum(l[u] for u in A), 2, name="minimize position of elements in A")
+    m.setObjectiveN(sum(-l[u] for u in B), 3, name="maximize position of elements in B")
+    m.setObjectiveN(sum(r[e] for e in G.edges(keys=True)), 4, priority=2, name="minimize feedback arcs")
+
+    m.optimize()
+
+    print(sum(r[e].X for e in G.edges(keys=True)))
+    
+
+    return {u: int(arith.float_to_frac(l[u].X)) for u in G.nodes}, m.Work

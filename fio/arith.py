@@ -63,13 +63,13 @@ def continued(r: F) -> list[int]:
     
     return [i] + continued(1/f)
 
-def float_to_frac(r: float)-> F:
+def float_to_frac(r: float, limit=1000)-> F:
 
   integral = int(math.floor(r))
 
   r = r - integral
 
-  a = iter(reversed(list(takewhile(lambda x: x < 1000, continued(F.from_float(r))))))
+  a = iter(reversed(list(takewhile(lambda x: x < limit, continued(F.from_float(r))))))
   
   fractionnal = F(next(a), 1)
   for y in a:
