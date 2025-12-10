@@ -3,7 +3,7 @@
 An automatic factory layout generator for the video game Factorio. This tool analyzes production recipes and generates optimized factory blueprints.
 
 > [!NOTE]  
-> Following the factorio space age release, [quality](https://factorio.com/blog/post/fff-375) was added to the game. It was the occasion to update the code with new algorithms. The rewrite is in process. The two-stages mathematical modeling for quality-updated factorio is available [quality.ipynb](/notebooks/quality.ipynb). It requires Gurobi to run, and indicate what kind of modules should be used in order to get the least number of machines to perform a given product. It exports a graph in `gml` format. The graph can then be plotted using the [layout.ipynb](https://github.com/adelaett/automated-factorio/notebooks/layout.ipynb) file. Blueprint generation for these is for the moment disabled.
+> Following the factorio space age release, [quality](https://factorio.com/blog/post/fff-375) was added to the game. It was the occasion to update the code with new algorithms. The rewrite is in process. The two-stages mathematical modeling for quality-updated factorio is available [quality.ipynb](https://github.com/adelaett/automated-factorio/blob/main/notebooks/quality.ipynb). It requires Gurobi to run, and indicate what kind of modules should be used in order to get the least number of machines to perform a given product. It exports a graph in `gml` format. The graph can then be plotted using the [layout.ipynb](https://github.com/adelaett/automated-factorio/blob/main/notebooks/layout.ipynb) file. Blueprint generation for these is for the moment disabled.
 
 
 ## Features
