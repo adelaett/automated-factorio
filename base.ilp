@@ -1,0 +1,625 @@
+\ Model _copy
+\ LP format - for model browsing. Use MPS format to capture full model detail.
+\ Signature: 0x5e22c2ea342b5ba1
+Minimize
+ 
+Subject To
+ R3: used[item,calcite,3] - produced[item,calcite,3] <= 0
+ R116: used[item,metallic-asteroid-chunk,5]
+   - produced[item,metallic-asteroid-chunk,5] <= 0
+ R134: used[item,iron-ore,3] - produced[item,iron-ore,3] <= 0
+ R171: used[item,oxide-asteroid-chunk,4]
+   - produced[item,oxide-asteroid-chunk,4] <= 0
+ R195: used[item,carbonic-asteroid-chunk,3]
+   - produced[item,carbonic-asteroid-chunk,3] <= 0
+ R206: used[item,calcite,5] - produced[item,calcite,5] <= 0
+ R337: used[item,iron-ore,5] - produced[item,iron-ore,5] <= 0
+ R357: used[item,carbonic-asteroid-chunk,2]
+   - produced[item,carbonic-asteroid-chunk,2] <= 0
+ R364: used[item,calcite,4] - produced[item,calcite,4] <= 0
+ R419: used[item,carbonic-asteroid-chunk,5]
+   - produced[item,carbonic-asteroid-chunk,5] <= 0
+ R551: used[item,oxide-asteroid-chunk,5]
+   - produced[item,oxide-asteroid-chunk,5] <= 0
+ R587: used[item,carbonic-asteroid-chunk,4]
+   - produced[item,carbonic-asteroid-chunk,4] <= 0
+ R755: used[fluid,molten-iron,0] - produced[fluid,molten-iron,0] <= 0
+ R995: used[item,metallic-asteroid-chunk,0]
+   - produced[item,metallic-asteroid-chunk,0] <= 0
+ R1099: used[item,calcite,0] - produced[item,calcite,0] <= 0
+ R1219: used[item,metallic-asteroid-chunk,2]
+   - produced[item,metallic-asteroid-chunk,2] <= 0
+ R1241: used[item,iron-ore,0] - produced[item,iron-ore,0] <= 0
+ R1281: used[item,oxide-asteroid-chunk,1]
+   - produced[item,oxide-asteroid-chunk,1] <= 0
+ R1312: used[item,carbonic-asteroid-chunk,0]
+   - produced[item,carbonic-asteroid-chunk,0] <= 0
+ R1319: used[item,calcite,2] - produced[item,calcite,2] <= 0
+ R1394: used[item,metallic-asteroid-chunk,1]
+   - produced[item,metallic-asteroid-chunk,1] <= 0
+ R1450: used[item,oxide-asteroid-chunk,0]
+   - produced[item,oxide-asteroid-chunk,0] <= 0
+ R1451: used[item,metallic-asteroid-chunk,4]
+   - produced[item,metallic-asteroid-chunk,4] <= 0
+ R1471: used[item,iron-ore,2] - produced[item,iron-ore,2] <= 0
+ R1497: used[item,calcite,1] - produced[item,calcite,1] <= 0
+ R1515: used[item,oxide-asteroid-chunk,3]
+   - produced[item,oxide-asteroid-chunk,3] <= 0
+ R1544: used[fluid,lava,0] - produced[fluid,lava,0] <= 0
+ R1618: used[item,metallic-asteroid-chunk,3]
+   - produced[item,metallic-asteroid-chunk,3] <= 0
+ R1635: used[item,iron-ore,1] - produced[item,iron-ore,1] <= 0
+ R1669: used[item,oxide-asteroid-chunk,2]
+   - produced[item,oxide-asteroid-chunk,2] <= 0
+ R1686: used[item,iron-ore,4] - produced[item,iron-ore,4] <= 0
+ R1700: used[item,carbonic-asteroid-chunk,1]
+   - produced[item,carbonic-asteroid-chunk,1] <= 0
+ used-('item',_'calcite',_3):
+   - usage[acid-neutralisation,3,('assembling-machine',_'chemical-plant'),()]
+   - usage[acid-neutralisation,3,('assembling-machine',_'cryogenic-plant'),()]
+   - 2 usage[simple-coal-liquefaction,3,('assembling-machine',_'oil-refinery'),()]
+   - usage[molten-copper-from-lava,3,('assembling-machine',_'foundry'),()]
+   - usage[advanced-thruster-oxidizer,3,('assembling-machine',_'chemical-plant'),()]
+   - usage[molten-iron,3,('assembling-machine',_'foundry'),()]
+   - usage[molten-copper,3,('assembling-machine',_'foundry'),()]
+   - usage[molten-iron-from-lava,3,('assembling-machine',_'foundry'),()]
+   - usage[advanced-thruster-fuel,3,('assembling-machine',_'chemical-plant'),()]
+   + used[item,calcite,3] = 0
+ produced-('item',_'calcite',_3):
+   - 2 usage[advanced-oxide-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   + produced[item,calcite,3] = 0
+ used-('item',_'metallic-asteroid-chunk',_5):
+   - usage[metallic-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   - usage[advanced-metallic-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   - usage[metallic-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()]
+   + used[item,metallic-asteroid-chunk,5] = 0
+ produced-('item',_'metallic-asteroid-chunk',_5):
+   - 0.2 usage[metallic-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-metallic-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()]
+   - 0.4 usage[metallic-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()]
+   + produced[item,metallic-asteroid-chunk,5] = 0
+ used-('item',_'iron-ore',_3):
+   - usage[iron-plate,3,('furnace',_'electric-furnace'),()]
+   - 2 usage[advanced-thruster-oxidizer,3,('assembling-machine',_'chemical-plant'),()]
+   - 50 usage[molten-iron,3,('assembling-machine',_'foundry'),()]
+   - 2 usage[thruster-oxidizer,3,('assembling-machine',_'chemical-plant'),()]
+   - usage[concrete,3,('assembling-machine',_'assembling-machine-2'),()]
+   - usage[concrete,3,('assembling-machine',_'assembling-machine-3'),()]
+   + used[item,iron-ore,3] = 0
+ produced-('item',_'iron-ore',_3):
+   - 20 usage[metallic-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   - 10 usage[advanced-metallic-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   + produced[item,iron-ore,3] = 0
+ produced-('item',_'iron-gear-wheel',_0):
+   - usage[casting-iron-gear-wheel,0,('assembling-machine',_'foundry'),()]
+   + produced[item,iron-gear-wheel,0] = -10
+ used-('item',_'oxide-asteroid-chunk',_4):
+   - usage[oxide-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()]
+   - usage[oxide-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   - usage[advanced-oxide-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   + used[item,oxide-asteroid-chunk,4] = 0
+ produced-('item',_'oxide-asteroid-chunk',_4):
+   - 0.4 usage[oxide-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-oxide-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()]
+   + produced[item,oxide-asteroid-chunk,4] = 0
+ used-('item',_'carbonic-asteroid-chunk',_3):
+   - usage[carbonic-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   - usage[advanced-carbonic-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   - usage[carbonic-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()]
+   + used[item,carbonic-asteroid-chunk,3] = 0
+ produced-('item',_'carbonic-asteroid-chunk',_3):
+   - 0.2 usage[carbonic-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-carbonic-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()]
+   - 0.4 usage[carbonic-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()]
+   + produced[item,carbonic-asteroid-chunk,3] = 0
+ used-('item',_'calcite',_5):
+   - usage[molten-copper,5,('assembling-machine',_'foundry'),()]
+   - 2 usage[simple-coal-liquefaction,5,('assembling-machine',_'oil-refinery'),()]
+   - usage[molten-iron-from-lava,5,('assembling-machine',_'foundry'),()]
+   - usage[molten-copper-from-lava,5,('assembling-machine',_'foundry'),()]
+   - usage[acid-neutralisation,5,('assembling-machine',_'chemical-plant'),()]
+   - usage[molten-iron,5,('assembling-machine',_'foundry'),()]
+   - usage[advanced-thruster-fuel,5,('assembling-machine',_'chemical-plant'),()]
+   - usage[advanced-thruster-oxidizer,5,('assembling-machine',_'chemical-plant'),()]
+   - usage[acid-neutralisation,5,('assembling-machine',_'cryogenic-plant'),()]
+   + used[item,calcite,5] = 0
+ produced-('item',_'calcite',_5):
+   - 2 usage[advanced-oxide-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   + produced[item,calcite,5] = 0
+ used-('item',_'iron-ore',_5):
+   - usage[iron-plate,5,('furnace',_'electric-furnace'),()]
+   - 50 usage[molten-iron,5,('assembling-machine',_'foundry'),()]
+   - 2 usage[advanced-thruster-oxidizer,5,('assembling-machine',_'chemical-plant'),()]
+   - 2 usage[thruster-oxidizer,5,('assembling-machine',_'chemical-plant'),()]
+   - usage[concrete,5,('assembling-machine',_'assembling-machine-2'),()]
+   - usage[concrete,5,('assembling-machine',_'assembling-machine-3'),()]
+   + used[item,iron-ore,5] = 0
+ produced-('item',_'iron-ore',_5):
+   - 20 usage[metallic-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   - 10 usage[advanced-metallic-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   + produced[item,iron-ore,5] = 0
+ used-('item',_'carbonic-asteroid-chunk',_2):
+   - usage[carbonic-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()]
+   - usage[advanced-carbonic-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   - usage[carbonic-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   + used[item,carbonic-asteroid-chunk,2] = 0
+ produced-('item',_'carbonic-asteroid-chunk',_2):
+   - 0.4 usage[carbonic-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-carbonic-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   + produced[item,carbonic-asteroid-chunk,2] = 0
+ used-('item',_'calcite',_4):
+   - usage[acid-neutralisation,4,('assembling-machine',_'cryogenic-plant'),()]
+   - usage[molten-copper-from-lava,4,('assembling-machine',_'foundry'),()]
+   - usage[advanced-thruster-fuel,4,('assembling-machine',_'chemical-plant'),()]
+   - 2 usage[simple-coal-liquefaction,4,('assembling-machine',_'oil-refinery'),()]
+   - usage[molten-copper,4,('assembling-machine',_'foundry'),()]
+   - usage[molten-iron-from-lava,4,('assembling-machine',_'foundry'),()]
+   - usage[advanced-thruster-oxidizer,4,('assembling-machine',_'chemical-plant'),()]
+   - usage[acid-neutralisation,4,('assembling-machine',_'chemical-plant'),()]
+   - usage[molten-iron,4,('assembling-machine',_'foundry'),()]
+   + used[item,calcite,4] = 0
+ produced-('item',_'calcite',_4):
+   - 2 usage[advanced-oxide-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   + produced[item,calcite,4] = 0
+ used-('item',_'carbonic-asteroid-chunk',_5):
+   - usage[carbonic-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()]
+   - usage[carbonic-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   - usage[advanced-carbonic-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   + used[item,carbonic-asteroid-chunk,5] = 0
+ produced-('item',_'carbonic-asteroid-chunk',_5):
+   - 0.4 usage[carbonic-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-carbonic-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   + produced[item,carbonic-asteroid-chunk,5] = 0
+ used-('item',_'oxide-asteroid-chunk',_5):
+   - usage[oxide-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   - usage[advanced-oxide-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   - usage[oxide-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()]
+   + used[item,oxide-asteroid-chunk,5] = 0
+ produced-('item',_'oxide-asteroid-chunk',_5):
+   - 0.2 usage[oxide-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-oxide-asteroid-crushing,5,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()]
+   - 0.4 usage[oxide-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()]
+   + produced[item,oxide-asteroid-chunk,5] = 0
+ used-('item',_'carbonic-asteroid-chunk',_4):
+   - usage[advanced-carbonic-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   - usage[carbonic-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   - usage[carbonic-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()]
+   + used[item,carbonic-asteroid-chunk,4] = 0
+ produced-('item',_'carbonic-asteroid-chunk',_4):
+   - 0.2 usage[oxide-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-carbonic-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()]
+   - 0.4 usage[carbonic-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()]
+   + produced[item,carbonic-asteroid-chunk,4] = 0
+ used-('fluid',_'molten-iron',_0):
+   - 50 usage[casting-pipe-to-ground,4,('assembling-machine',_'foundry'),()]
+   - 10 usage[casting-iron-gear-wheel,4,('assembling-machine',_'foundry'),()]
+   - 30 usage[casting-steel,5,('assembling-machine',_'foundry'),()]
+   - 20 usage[concrete-from-molten-iron,5,('assembling-machine',_'foundry'),()]
+   - 10 usage[casting-pipe,4,('assembling-machine',_'foundry'),()]
+   - 50 usage[casting-pipe-to-ground,3,('assembling-machine',_'foundry'),()]
+   - 80 usage[casting-low-density-structure,1,('assembling-machine',_'foundry'),()]
+   - 50 usage[casting-pipe-to-ground,5,('assembling-machine',_'foundry'),()]
+   - 200 usage[big-mining-drill,4,('assembling-machine',_'foundry'),()]
+   - 10 usage[casting-pipe,5,('assembling-machine',_'foundry'),()]
+   - 20 usage[casting-iron,1,('assembling-machine',_'foundry'),()]
+   - 80 usage[casting-low-density-structure,0,('assembling-machine',_'foundry'),()]
+   - 10 usage[tungsten-plate,0,('assembling-machine',_'foundry'),()]
+   - 10 usage[casting-iron-gear-wheel,3,('assembling-machine',_'foundry'),()]
+   - 20 usage[casting-iron,3,('assembling-machine',_'foundry'),()]
+   - 30 usage[casting-steel,2,('assembling-machine',_'foundry'),()]
+   - 80 usage[casting-low-density-structure,2,('assembling-machine',_'foundry'),()]
+   - 10 usage[casting-iron-gear-wheel,5,('assembling-machine',_'foundry'),()]
+   - 30 usage[casting-steel,4,('assembling-machine',_'foundry'),()]
+   - 20 usage[casting-iron-stick,1,('assembling-machine',_'foundry'),()]
+   - 10 usage[casting-pipe,1,('assembling-machine',_'foundry'),()]
+   - 20 usage[concrete-from-molten-iron,4,('assembling-machine',_'foundry'),()]
+   - 200 usage[big-mining-drill,1,('assembling-machine',_'foundry'),()]
+   - 10 usage[casting-pipe,2,('assembling-machine',_'foundry'),()]
+   - 200 usage[big-mining-drill,3,('assembling-machine',_'foundry'),()]
+   - 20 usage[casting-iron-stick,0,('assembling-machine',_'foundry'),()]
+   - 20 usage[concrete-from-molten-iron,1,('assembling-machine',_'foundry'),()]
+   - 10 usage[casting-iron-gear-wheel,2,('assembling-machine',_'foundry'),()]
+   - 10 usage[tungsten-plate,3,('assembling-machine',_'foundry'),()]
+   - 20 usage[concrete-from-molten-iron,3,('assembling-machine',_'foundry'),()]
+   - 30 usage[casting-steel,1,('assembling-machine',_'foundry'),()]
+   - 10 usage[tungsten-plate,5,('assembling-machine',_'foundry'),()]
+   - 80 usage[casting-low-density-structure,4,('assembling-machine',_'foundry'),()]
+   - 10 usage[tungsten-plate,4,('assembling-machine',_'foundry'),()]
+   - 20 usage[casting-iron-stick,5,('assembling-machine',_'foundry'),()]
+   - 30 usage[casting-steel,0,('assembling-machine',_'foundry'),()]
+   - 200 usage[big-mining-drill,0,('assembling-machine',_'foundry'),()]
+   - 20 usage[casting-iron,0,('assembling-machine',_'foundry'),()]
+   - 20 usage[casting-iron,2,('assembling-machine',_'foundry'),()]
+   - 20 usage[concrete-from-molten-iron,0,('assembling-machine',_'foundry'),()]
+   - 20 usage[concrete-from-molten-iron,2,('assembling-machine',_'foundry'),()]
+   - 50 usage[casting-pipe-to-ground,0,('assembling-machine',_'foundry'),()]
+   - 80 usage[casting-low-density-structure,3,('assembling-machine',_'foundry'),()]
+   - 30 usage[casting-steel,3,('assembling-machine',_'foundry'),()]
+   - 10 usage[casting-pipe,0,('assembling-machine',_'foundry'),()]
+   - 80 usage[casting-low-density-structure,5,('assembling-machine',_'foundry'),()]
+   - 20 usage[casting-iron,5,('assembling-machine',_'foundry'),()]
+   - 10 usage[casting-iron-gear-wheel,0,('assembling-machine',_'foundry'),()]
+   - 10 usage[tungsten-plate,1,('assembling-machine',_'foundry'),()]
+   - 200 usage[big-mining-drill,2,('assembling-machine',_'foundry'),()]
+   - 10 usage[tungsten-plate,2,('assembling-machine',_'foundry'),()]
+   - 10 usage[casting-iron-gear-wheel,1,('assembling-machine',_'foundry'),()]
+   - 20 usage[casting-iron,4,('assembling-machine',_'foundry'),()]
+   - 20 usage[casting-iron-stick,3,('assembling-machine',_'foundry'),()]
+   - 50 usage[casting-pipe-to-ground,1,('assembling-machine',_'foundry'),()]
+   - 50 usage[casting-pipe-to-ground,2,('assembling-machine',_'foundry'),()]
+   - 200 usage[big-mining-drill,5,('assembling-machine',_'foundry'),()]
+   - 10 usage[casting-pipe,3,('assembling-machine',_'foundry'),()]
+   - 20 usage[casting-iron-stick,4,('assembling-machine',_'foundry'),()]
+   - 20 usage[casting-iron-stick,2,('assembling-machine',_'foundry'),()]
+   + used[fluid,molten-iron,0] = 0
+ produced-('fluid',_'molten-iron',_0):
+   - 500 usage[molten-iron,1,('assembling-machine',_'foundry'),()]
+   - 250 usage[molten-iron-from-lava,0,('assembling-machine',_'foundry'),()]
+   - 250 usage[molten-iron-from-lava,5,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-iron,0,('assembling-machine',_'foundry'),()]
+   - 250 usage[molten-iron-from-lava,4,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-iron,5,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-iron,3,('assembling-machine',_'foundry'),()]
+   - 250 usage[molten-iron-from-lava,2,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-iron,4,('assembling-machine',_'foundry'),()]
+   - 250 usage[molten-iron-from-lava,1,('assembling-machine',_'foundry'),()]
+   - 250 usage[molten-iron-from-lava,3,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-iron,2,('assembling-machine',_'foundry'),()]
+   + produced[fluid,molten-iron,0] = 0
+ used-('item',_'metallic-asteroid-chunk',_0):
+   - usage[metallic-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()]
+   - usage[advanced-metallic-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   - usage[metallic-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   + used[item,metallic-asteroid-chunk,0] = 0
+ produced-('item',_'metallic-asteroid-chunk',_0):
+   - 0.2 usage[oxide-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()]
+   - 0.4 usage[metallic-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-metallic-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   + produced[item,metallic-asteroid-chunk,0] = 0
+ used-('item',_'calcite',_0):
+   - 2 usage[simple-coal-liquefaction,0,('assembling-machine',_'oil-refinery'),()]
+   - usage[molten-iron-from-lava,0,('assembling-machine',_'foundry'),()]
+   - usage[advanced-thruster-fuel,0,('assembling-machine',_'chemical-plant'),()]
+   - usage[acid-neutralisation,0,('assembling-machine',_'cryogenic-plant'),()]
+   - usage[acid-neutralisation,0,('assembling-machine',_'chemical-plant'),()]
+   - usage[molten-iron,0,('assembling-machine',_'foundry'),()]
+   - usage[molten-copper,0,('assembling-machine',_'foundry'),()]
+   - usage[molten-copper-from-lava,0,('assembling-machine',_'foundry'),()]
+   - usage[advanced-thruster-oxidizer,0,('assembling-machine',_'chemical-plant'),()]
+   + used[item,calcite,0] = 0
+ produced-('item',_'calcite',_0):
+   - 2 usage[advanced-oxide-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   + produced[item,calcite,0] = 0
+ used-('item',_'metallic-asteroid-chunk',_2):
+   - usage[metallic-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()]
+   - usage[metallic-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   - usage[advanced-metallic-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   + used[item,metallic-asteroid-chunk,2] = 0
+ produced-('item',_'metallic-asteroid-chunk',_2):
+   - 0.2 usage[carbonic-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()]
+   - 0.4 usage[metallic-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-metallic-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   + produced[item,metallic-asteroid-chunk,2] = 0
+ used-('item',_'iron-ore',_0):
+   - usage[iron-plate,0,('furnace',_'electric-furnace'),()]
+   - usage[concrete,0,('assembling-machine',_'assembling-machine-2'),()]
+   - 50 usage[molten-iron,0,('assembling-machine',_'foundry'),()]
+   - usage[concrete,0,('assembling-machine',_'assembling-machine-3'),()]
+   - 2 usage[thruster-oxidizer,0,('assembling-machine',_'chemical-plant'),()]
+   - 2 usage[advanced-thruster-oxidizer,0,('assembling-machine',_'chemical-plant'),()]
+   + used[item,iron-ore,0] = 0
+ produced-('item',_'iron-ore',_0):
+   - 10 usage[advanced-metallic-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   - 20 usage[metallic-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   + produced[item,iron-ore,0] = 0
+ used-('item',_'oxide-asteroid-chunk',_1):
+   - usage[advanced-oxide-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   - usage[oxide-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   - usage[oxide-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()]
+   + used[item,oxide-asteroid-chunk,1] = 0
+ produced-('item',_'oxide-asteroid-chunk',_1):
+   - 0.2 usage[carbonic-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-oxide-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()]
+   - 0.4 usage[oxide-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()]
+   + produced[item,oxide-asteroid-chunk,1] = 0
+ used-('item',_'carbonic-asteroid-chunk',_0):
+   - usage[carbonic-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   - usage[carbonic-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()]
+   - usage[advanced-carbonic-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   + used[item,carbonic-asteroid-chunk,0] = 0
+ produced-('item',_'carbonic-asteroid-chunk',_0):
+   - 0.2 usage[oxide-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()]
+   - 0.4 usage[carbonic-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-carbonic-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   + produced[item,carbonic-asteroid-chunk,0] = 0
+ used-('item',_'calcite',_2):
+   - usage[advanced-thruster-fuel,2,('assembling-machine',_'chemical-plant'),()]
+   - usage[advanced-thruster-oxidizer,2,('assembling-machine',_'chemical-plant'),()]
+   - 2 usage[simple-coal-liquefaction,2,('assembling-machine',_'oil-refinery'),()]
+   - usage[molten-copper,2,('assembling-machine',_'foundry'),()]
+   - usage[molten-copper-from-lava,2,('assembling-machine',_'foundry'),()]
+   - usage[molten-iron-from-lava,2,('assembling-machine',_'foundry'),()]
+   - usage[acid-neutralisation,2,('assembling-machine',_'chemical-plant'),()]
+   - usage[molten-iron,2,('assembling-machine',_'foundry'),()]
+   - usage[acid-neutralisation,2,('assembling-machine',_'cryogenic-plant'),()]
+   + used[item,calcite,2] = 0
+ produced-('item',_'calcite',_2):
+   - 2 usage[advanced-oxide-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   + produced[item,calcite,2] = 0
+ used-('item',_'metallic-asteroid-chunk',_1):
+   - usage[metallic-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   - usage[advanced-metallic-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   - usage[metallic-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()]
+   + used[item,metallic-asteroid-chunk,1] = 0
+ produced-('item',_'metallic-asteroid-chunk',_1):
+   - 0.2 usage[carbonic-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-metallic-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   - 0.4 usage[metallic-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()]
+   + produced[item,metallic-asteroid-chunk,1] = 0
+ used-('item',_'oxide-asteroid-chunk',_0):
+   - usage[oxide-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()]
+   - usage[oxide-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   - usage[advanced-oxide-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   + used[item,oxide-asteroid-chunk,0] = 0
+ produced-('item',_'oxide-asteroid-chunk',_0):
+   - 0.4 usage[oxide-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-oxide-asteroid-crushing,0,('assembling-machine',_'crusher'),()]
+   + produced[item,oxide-asteroid-chunk,0] = 0
+ used-('item',_'metallic-asteroid-chunk',_4):
+   - usage[advanced-metallic-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   - usage[metallic-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()]
+   - usage[metallic-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   + used[item,metallic-asteroid-chunk,4] = 0
+ produced-('item',_'metallic-asteroid-chunk',_4):
+   - 0.2 usage[oxide-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-metallic-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   - 0.4 usage[metallic-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()]
+   + produced[item,metallic-asteroid-chunk,4] = 0
+ used-('item',_'iron-ore',_2):
+   - usage[concrete,2,('assembling-machine',_'assembling-machine-2'),()]
+   - 2 usage[advanced-thruster-oxidizer,2,('assembling-machine',_'chemical-plant'),()]
+   - usage[concrete,2,('assembling-machine',_'assembling-machine-3'),()]
+   - usage[iron-plate,2,('furnace',_'electric-furnace'),()]
+   - 2 usage[thruster-oxidizer,2,('assembling-machine',_'chemical-plant'),()]
+   - 50 usage[molten-iron,2,('assembling-machine',_'foundry'),()]
+   + used[item,iron-ore,2] = 0
+ produced-('item',_'iron-ore',_2):
+   - 20 usage[metallic-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   - 10 usage[advanced-metallic-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   + produced[item,iron-ore,2] = 0
+ used-('item',_'calcite',_1):
+   - usage[advanced-thruster-oxidizer,1,('assembling-machine',_'chemical-plant'),()]
+   - usage[molten-iron,1,('assembling-machine',_'foundry'),()]
+   - usage[acid-neutralisation,1,('assembling-machine',_'cryogenic-plant'),()]
+   - usage[advanced-thruster-fuel,1,('assembling-machine',_'chemical-plant'),()]
+   - 2 usage[simple-coal-liquefaction,1,('assembling-machine',_'oil-refinery'),()]
+   - usage[molten-copper,1,('assembling-machine',_'foundry'),()]
+   - usage[molten-iron-from-lava,1,('assembling-machine',_'foundry'),()]
+   - usage[molten-copper-from-lava,1,('assembling-machine',_'foundry'),()]
+   - usage[acid-neutralisation,1,('assembling-machine',_'chemical-plant'),()]
+   + used[item,calcite,1] = 0
+ produced-('item',_'calcite',_1):
+   - 2 usage[advanced-oxide-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   + produced[item,calcite,1] = 0
+ used-('item',_'oxide-asteroid-chunk',_3):
+   - usage[oxide-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()]
+   - usage[advanced-oxide-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   - usage[oxide-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   + used[item,oxide-asteroid-chunk,3] = 0
+ produced-('item',_'oxide-asteroid-chunk',_3):
+   - 0.4 usage[oxide-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-oxide-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()]
+   + produced[item,oxide-asteroid-chunk,3] = 0
+ used-('fluid',_'lava',_0):
+   - 500 usage[molten-iron-from-lava,0,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-copper-from-lava,4,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-iron-from-lava,5,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-copper-from-lava,2,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-copper-from-lava,3,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-copper-from-lava,5,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-iron-from-lava,4,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-iron-from-lava,2,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-copper-from-lava,0,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-iron-from-lava,1,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-iron-from-lava,3,('assembling-machine',_'foundry'),()]
+   - 500 usage[molten-copper-from-lava,1,('assembling-machine',_'foundry'),()]
+   + used[fluid,lava,0] = 0
+ produced-('fluid',_'lava',_0): produced[fluid,lava,0] = 0
+ used-('item',_'metallic-asteroid-chunk',_3):
+   - usage[metallic-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   - usage[advanced-metallic-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   - usage[metallic-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()]
+   + used[item,metallic-asteroid-chunk,3] = 0
+ produced-('item',_'metallic-asteroid-chunk',_3):
+   - 0.2 usage[metallic-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-metallic-asteroid-crushing,3,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()]
+   - 0.4 usage[metallic-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()]
+   + produced[item,metallic-asteroid-chunk,3] = 0
+ used-('item',_'iron-ore',_1):
+   - 2 usage[advanced-thruster-oxidizer,1,('assembling-machine',_'chemical-plant'),()]
+   - 50 usage[molten-iron,1,('assembling-machine',_'foundry'),()]
+   - usage[iron-plate,1,('furnace',_'electric-furnace'),()]
+   - usage[concrete,1,('assembling-machine',_'assembling-machine-2'),()]
+   - usage[concrete,1,('assembling-machine',_'assembling-machine-3'),()]
+   - 2 usage[thruster-oxidizer,1,('assembling-machine',_'chemical-plant'),()]
+   + used[item,iron-ore,1] = 0
+ produced-('item',_'iron-ore',_1):
+   - 20 usage[metallic-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   - 10 usage[advanced-metallic-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   + produced[item,iron-ore,1] = 0
+ used-('item',_'oxide-asteroid-chunk',_2):
+   - usage[advanced-oxide-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   - usage[oxide-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()]
+   - usage[oxide-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   + used[item,oxide-asteroid-chunk,2] = 0
+ produced-('item',_'oxide-asteroid-chunk',_2):
+   - 0.2 usage[carbonic-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-oxide-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   - 0.4 usage[oxide-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-crushing,2,('assembling-machine',_'crusher'),()]
+   + produced[item,oxide-asteroid-chunk,2] = 0
+ used-('item',_'iron-ore',_4):
+   - 2 usage[thruster-oxidizer,4,('assembling-machine',_'chemical-plant'),()]
+   - 2 usage[advanced-thruster-oxidizer,4,('assembling-machine',_'chemical-plant'),()]
+   - usage[iron-plate,4,('furnace',_'electric-furnace'),()]
+   - usage[concrete,4,('assembling-machine',_'assembling-machine-2'),()]
+   - 50 usage[molten-iron,4,('assembling-machine',_'foundry'),()]
+   - usage[concrete,4,('assembling-machine',_'assembling-machine-3'),()]
+   + used[item,iron-ore,4] = 0
+ produced-('item',_'iron-ore',_4):
+   - 10 usage[advanced-metallic-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   - 20 usage[metallic-asteroid-crushing,4,('assembling-machine',_'crusher'),()]
+   + produced[item,iron-ore,4] = 0
+ used-('item',_'carbonic-asteroid-chunk',_1):
+   - usage[carbonic-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()]
+   - usage[advanced-carbonic-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   - usage[carbonic-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   + used[item,carbonic-asteroid-chunk,1] = 0
+ produced-('item',_'carbonic-asteroid-chunk',_1):
+   - 0.4 usage[carbonic-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()]
+   - 0.05 usage[advanced-carbonic-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[metallic-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[carbonic-asteroid-crushing,1,('assembling-machine',_'crusher'),()]
+   - 0.2 usage[oxide-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()]
+   + produced[item,carbonic-asteroid-chunk,1] = 0
+Bounds
+ usage[oxide-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()] free
+ usage[molten-iron,1,('assembling-machine',_'foundry'),()] free
+ usage[molten-iron-from-lava,0,('assembling-machine',_'foundry'),()] free
+ usage[oxide-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()] free
+ usage[carbonic-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()] free
+ usage[advanced-oxide-asteroid-crushing,5,('assembling-machine',_'crusher'),()] free
+ usage[metallic-asteroid-crushing,3,('assembling-machine',_'crusher'),()] free
+ usage[metallic-asteroid-crushing,5,('assembling-machine',_'crusher'),()] free
+ usage[carbonic-asteroid-reprocessing,0,('assembling-machine',_'crusher'),()] free
+ usage[carbonic-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()] free
+ usage[molten-iron-from-lava,5,('assembling-machine',_'foundry'),()] free
+ usage[advanced-oxide-asteroid-crushing,4,('assembling-machine',_'crusher'),()] free
+ usage[molten-iron,0,('assembling-machine',_'foundry'),()] free
+ usage[oxide-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()] free
+ usage[carbonic-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()] free
+ usage[advanced-oxide-asteroid-crushing,2,('assembling-machine',_'crusher'),()] free
+ usage[oxide-asteroid-reprocessing,5,('assembling-machine',_'crusher'),()] free
+ usage[metallic-asteroid-crushing,2,('assembling-machine',_'crusher'),()] free
+ usage[advanced-oxide-asteroid-crushing,1,('assembling-machine',_'crusher'),()] free
+ usage[molten-iron-from-lava,4,('assembling-machine',_'foundry'),()] free
+ usage[advanced-oxide-asteroid-crushing,3,('assembling-machine',_'crusher'),()] free
+ usage[molten-iron,5,('assembling-machine',_'foundry'),()] free
+ usage[molten-iron,3,('assembling-machine',_'foundry'),()] free
+ usage[molten-iron-from-lava,2,('assembling-machine',_'foundry'),()] free
+ usage[metallic-asteroid-crushing,1,('assembling-machine',_'crusher'),()] free
+ usage[casting-iron-gear-wheel,0,('assembling-machine',_'foundry'),()] free
+ usage[oxide-asteroid-reprocessing,2,('assembling-machine',_'crusher'),()] free
+ usage[metallic-asteroid-crushing,4,('assembling-machine',_'crusher'),()] free
+ usage[molten-iron,4,('assembling-machine',_'foundry'),()] free
+ usage[molten-iron-from-lava,1,('assembling-machine',_'foundry'),()] free
+ usage[advanced-oxide-asteroid-crushing,0,('assembling-machine',_'crusher'),()] free
+ usage[molten-iron-from-lava,3,('assembling-machine',_'foundry'),()] free
+ usage[molten-iron,2,('assembling-machine',_'foundry'),()] free
+ usage[oxide-asteroid-reprocessing,1,('assembling-machine',_'crusher'),()] free
+ usage[carbonic-asteroid-reprocessing,3,('assembling-machine',_'crusher'),()] free
+ usage[metallic-asteroid-crushing,0,('assembling-machine',_'crusher'),()] free
+ usage[carbonic-asteroid-reprocessing,4,('assembling-machine',_'crusher'),()] free
+ used[item,calcite,3] free
+ used[item,metallic-asteroid-chunk,5] free
+ used[item,iron-ore,3] free
+ used[item,oxide-asteroid-chunk,4] free
+ used[item,carbonic-asteroid-chunk,3] free
+ used[item,calcite,5] free
+ used[item,iron-ore,5] free
+ used[item,carbonic-asteroid-chunk,2] free
+ used[item,calcite,4] free
+ used[item,carbonic-asteroid-chunk,5] free
+ used[item,oxide-asteroid-chunk,5] free
+ used[item,carbonic-asteroid-chunk,4] free
+ used[fluid,molten-iron,0] free
+ used[item,metallic-asteroid-chunk,0] free
+ used[item,calcite,0] free
+ used[item,metallic-asteroid-chunk,2] free
+ used[item,iron-ore,0] free
+ used[item,oxide-asteroid-chunk,1] free
+ used[item,carbonic-asteroid-chunk,0] free
+ used[item,calcite,2] free
+ used[item,metallic-asteroid-chunk,1] free
+ used[item,oxide-asteroid-chunk,0] free
+ used[item,metallic-asteroid-chunk,4] free
+ used[item,iron-ore,2] free
+ used[item,calcite,1] free
+ used[item,oxide-asteroid-chunk,3] free
+ used[fluid,lava,0] free
+ used[item,metallic-asteroid-chunk,3] free
+ used[item,iron-ore,1] free
+ used[item,oxide-asteroid-chunk,2] free
+ used[item,iron-ore,4] free
+ used[item,carbonic-asteroid-chunk,1] free
+ produced[item,calcite,3] free
+ produced[item,metallic-asteroid-chunk,5] free
+ produced[item,iron-ore,3] free
+ produced[item,oxide-asteroid-chunk,4] free
+ produced[item,carbonic-asteroid-chunk,3] free
+ produced[item,calcite,5] free
+ produced[item,iron-ore,5] free
+ produced[item,carbonic-asteroid-chunk,2] free
+ produced[item,calcite,4] free
+ produced[item,carbonic-asteroid-chunk,5] free
+ produced[item,oxide-asteroid-chunk,5] free
+ produced[item,carbonic-asteroid-chunk,4] free
+ produced[fluid,molten-iron,0] free
+ produced[item,metallic-asteroid-chunk,0] free
+ produced[item,calcite,0] free
+ produced[item,metallic-asteroid-chunk,2] free
+ produced[item,iron-ore,0] free
+ produced[item,oxide-asteroid-chunk,1] free
+ produced[item,carbonic-asteroid-chunk,0] free
+ produced[item,calcite,2] free
+ produced[item,metallic-asteroid-chunk,1] free
+ produced[item,oxide-asteroid-chunk,0] free
+ produced[item,metallic-asteroid-chunk,4] free
+ produced[item,iron-ore,2] free
+ produced[item,calcite,1] free
+ produced[item,oxide-asteroid-chunk,3] free
+ produced[fluid,lava,0] free
+ produced[item,metallic-asteroid-chunk,3] free
+ produced[item,iron-ore,1] free
+ produced[item,oxide-asteroid-chunk,2] free
+ produced[item,iron-ore,4] free
+ produced[item,carbonic-asteroid-chunk,1] free
+End

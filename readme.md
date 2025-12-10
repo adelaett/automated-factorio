@@ -2,16 +2,16 @@
 
 An automatic factory layout generator for the video game Factorio. This tool analyzes production recipes and generates optimized factory blueprints.
 
-> [!NOTE]  
-> Following the factorio space age release, [quality](https://factorio.com/blog/post/fff-375) was added to the game. It was the occasion to update the code with new algorithms. The rewrite is in process. The two-stages mathematical modeling for quality-updated factorio is available [quality.ipynb](https://github.com/adelaett/automated-factorio/blob/main/notebooks/quality.ipynb). It requires Gurobi to run, and indicate what kind of modules should be used in order to get the least number of machines to perform a given product. It exports a graph in `gml` format. The graph can then be plotted using the [layout.ipynb](https://github.com/adelaett/automated-factorio/blob/main/notebooks/layout.ipynb) file. Blueprint generation for these is for the moment disabled.
 
+> [!NOTE]  
+> The quality-updated version of the linear solver is available here [notebooks/layout.ipynb]
 
 ## Features
 
 - **Recipe Optimization**: Uses linear programming to determine optimal machine counts and production flows
 - **Blueprint Processing**: Parse and generate Factorio blueprint strings with base64 encoding/decoding
 - **Layout Generation**: Automatic placement of machines using mathematical optimization
-- **Routing Algorithms**: Pathfinding for connecting machines
+- **Routing Algorithms**: Pathfinding for connecting machines (A* and Dijkstra implementations)
 - **Bin Packing**: Efficient matching of input/output flows between machines
 - **Multiple Mod Support**: Database files for base game, Angel's & Bob's mods, and Krastorio2
 
@@ -46,8 +46,6 @@ The algorithms implemented in this project are based on classical combinatorial 
 - **Combinatorial Optimization: Theory and Algorithm** (Springer) - https://link.springer.com/book/10.1007/978-3-662-56039-6
 
 ### Similar Factorio Tools
-None of these tools generates blueprints.
-
 - **[Foreman2](https://github.com/DanielKote/Foreman2)** - Visual planning tool for Factorio production flowcharts
 - **[Production Flow](https://github.com/Windfisch/production-flow)** - Graph-based production flow optimizer for Factorio
 - **[Factorio Optimizer](https://github.com/meriton42/factorio-optimizer)** - Helps optimize Factorio factory layouts
